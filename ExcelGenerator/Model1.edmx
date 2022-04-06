@@ -1,0 +1,590 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="kepartners_data2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'kepartners_data2.dbo.activity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="activity">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="is_main" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="255" />
+          <Property Name="is_main" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'kepartners_data2.dbo.cash_flow_activity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="cash_flow_activity">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="is_main" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="is_main" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'kepartners_data2.dbo.cash_flow_category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="cash_flow_category">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="activity_id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="is_income" />
+            <PropertyRef Name="is_main" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="parent_id" Type="int" />
+          <Property Name="activity_id" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="is_income" Type="bit" Nullable="false" />
+          <Property Name="is_main" Type="bit" Nullable="false" />
+          <Property Name="is_direct_expense" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'kepartners_data2.dbo.cash_flow_history' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="cash_flow_history">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="money" />
+            <PropertyRef Name="month" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="money" Type="float" Nullable="false" />
+          <Property Name="month" Type="smallint" Nullable="false" />
+          <Property Name="comment" Type="nvarchar" MaxLength="255" />
+          <Property Name="amortization_months" Type="smallint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'kepartners_data2.dbo.cash_flow_info' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="cash_flow_info">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="month" />
+            <PropertyRef Name="money_start" />
+            <PropertyRef Name="money_end" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="month" Type="smallint" Nullable="false" />
+          <Property Name="money_start" Type="money" Nullable="false" />
+          <Property Name="money_end" Type="money" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'kepartners_data2.dbo.cash_flow_statement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="cash_flow_statement">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="money" />
+            <PropertyRef Name="month" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="money" Type="money" Nullable="false" />
+          <Property Name="month" Type="smallint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'kepartners_data2.dbo.category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="activity_id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="is_income" />
+            <PropertyRef Name="is_direct_expense" />
+            <PropertyRef Name="created_at" />
+            <PropertyRef Name="is_main" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="parent_id" Type="int" />
+          <Property Name="activity_id" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="is_income" Type="tinyint" Nullable="false" />
+          <Property Name="is_direct_expense" Type="tinyint" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="deleted_at" Type="date" />
+          <Property Name="is_main" Type="tinyint" Nullable="false" />
+          <Property Name="shop_id" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'kepartners_data2.dbo.category_history' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="category_history">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="ordinatory_payment" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="ordinatory_payment" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'kepartners_data2.dbo.registry' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="registry">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="money" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="money" Type="int" Nullable="false" />
+          <Property Name="comment" Type="nvarchar" MaxLength="255" />
+          <Property Name="amortization_end" Type="date" />
+          <Property Name="is_withdraw" Type="tinyint" />
+          <Property Name="credit_end" Type="date" />
+          <Property Name="credit_rate" Type="smallint" />
+          <Property Name="shop_id" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'kepartners_data2.dbo.user' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="roles" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="180" Nullable="false" />
+          <Property Name="roles" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="subscription_end" Type="date" />
+          <Property Name="subscription_lvl" Type="smallint" />
+        </EntityType>
+        <EntityContainer Name="kepartners_data2ModelStoreContainer">
+          <EntitySet Name="activity" EntityType="Self.activity" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [activity].[id] AS [id], 
+    [activity].[user_id] AS [user_id], 
+    [activity].[title] AS [title], 
+    [activity].[is_main] AS [is_main]
+    FROM [dbo].[activity] AS [activity]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="cash_flow_activity" EntityType="Self.cash_flow_activity" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [cash_flow_activity].[id] AS [id], 
+    [cash_flow_activity].[user_id] AS [user_id], 
+    [cash_flow_activity].[title] AS [title], 
+    [cash_flow_activity].[is_main] AS [is_main]
+    FROM [dbo].[cash_flow_activity] AS [cash_flow_activity]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="cash_flow_category" EntityType="Self.cash_flow_category" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [cash_flow_category].[id] AS [id], 
+    [cash_flow_category].[parent_id] AS [parent_id], 
+    [cash_flow_category].[activity_id] AS [activity_id], 
+    [cash_flow_category].[title] AS [title], 
+    [cash_flow_category].[is_income] AS [is_income], 
+    [cash_flow_category].[is_main] AS [is_main], 
+    [cash_flow_category].[is_direct_expense] AS [is_direct_expense]
+    FROM [dbo].[cash_flow_category] AS [cash_flow_category]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="cash_flow_history" EntityType="Self.cash_flow_history" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [cash_flow_history].[id] AS [id], 
+    [cash_flow_history].[category_id] AS [category_id], 
+    [cash_flow_history].[user_id] AS [user_id], 
+    [cash_flow_history].[date] AS [date], 
+    [cash_flow_history].[money] AS [money], 
+    [cash_flow_history].[month] AS [month], 
+    [cash_flow_history].[comment] AS [comment], 
+    [cash_flow_history].[amortization_months] AS [amortization_months]
+    FROM [dbo].[cash_flow_history] AS [cash_flow_history]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="cash_flow_info" EntityType="Self.cash_flow_info" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [cash_flow_info].[id] AS [id], 
+    [cash_flow_info].[user_id] AS [user_id], 
+    [cash_flow_info].[month] AS [month], 
+    [cash_flow_info].[money_start] AS [money_start], 
+    [cash_flow_info].[money_end] AS [money_end]
+    FROM [dbo].[cash_flow_info] AS [cash_flow_info]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="cash_flow_statement" EntityType="Self.cash_flow_statement" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [cash_flow_statement].[id] AS [id], 
+    [cash_flow_statement].[category_id] AS [category_id], 
+    [cash_flow_statement].[money] AS [money], 
+    [cash_flow_statement].[month] AS [month]
+    FROM [dbo].[cash_flow_statement] AS [cash_flow_statement]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="category" EntityType="Self.category" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [category].[id] AS [id], 
+    [category].[parent_id] AS [parent_id], 
+    [category].[activity_id] AS [activity_id], 
+    [category].[title] AS [title], 
+    [category].[is_income] AS [is_income], 
+    [category].[is_direct_expense] AS [is_direct_expense], 
+    [category].[created_at] AS [created_at], 
+    [category].[deleted_at] AS [deleted_at], 
+    [category].[is_main] AS [is_main], 
+    [category].[shop_id] AS [shop_id]
+    FROM [dbo].[category] AS [category]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="category_history" EntityType="Self.category_history" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [category_history].[id] AS [id], 
+    [category_history].[category_id] AS [category_id], 
+    [category_history].[date] AS [date], 
+    [category_history].[ordinatory_payment] AS [ordinatory_payment]
+    FROM [dbo].[category_history] AS [category_history]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="registry" EntityType="Self.registry" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [registry].[id] AS [id], 
+    [registry].[category_id] AS [category_id], 
+    [registry].[date] AS [date], 
+    [registry].[money] AS [money], 
+    [registry].[comment] AS [comment], 
+    [registry].[amortization_end] AS [amortization_end], 
+    [registry].[is_withdraw] AS [is_withdraw], 
+    [registry].[credit_end] AS [credit_end], 
+    [registry].[credit_rate] AS [credit_rate], 
+    [registry].[shop_id] AS [shop_id]
+    FROM [dbo].[registry] AS [registry]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="user" EntityType="Self.user" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [user].[id] AS [id], 
+    [user].[email] AS [email], 
+    [user].[roles] AS [roles], 
+    [user].[subscription_end] AS [subscription_end], 
+    [user].[subscription_lvl] AS [subscription_lvl]
+    FROM [dbo].[user] AS [user]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="kepartners_data2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="activity">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="is_main" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="is_main" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cash_flow_activity">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="is_main" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="is_main" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cash_flow_category">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="activity_id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="is_income" />
+            <PropertyRef Name="is_main" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="parent_id" Type="Int32" />
+          <Property Name="activity_id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="is_income" Type="Boolean" Nullable="false" />
+          <Property Name="is_main" Type="Boolean" Nullable="false" />
+          <Property Name="is_direct_expense" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="cash_flow_history">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="money" />
+            <PropertyRef Name="month" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="money" Type="Double" Nullable="false" />
+          <Property Name="month" Type="Int16" Nullable="false" />
+          <Property Name="comment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="amortization_months" Type="Int16" />
+        </EntityType>
+        <EntityType Name="cash_flow_info">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="month" />
+            <PropertyRef Name="money_start" />
+            <PropertyRef Name="money_end" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="month" Type="Int16" Nullable="false" />
+          <Property Name="money_start" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="money_end" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cash_flow_statement">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="money" />
+            <PropertyRef Name="month" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="money" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="month" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="activity_id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="is_income" />
+            <PropertyRef Name="is_direct_expense" />
+            <PropertyRef Name="created_at" />
+            <PropertyRef Name="is_main" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="parent_id" Type="Int32" />
+          <Property Name="activity_id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="is_income" Type="Byte" Nullable="false" />
+          <Property Name="is_direct_expense" Type="Byte" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="deleted_at" Type="DateTime" Precision="0" />
+          <Property Name="is_main" Type="Byte" Nullable="false" />
+          <Property Name="shop_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="category_history">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="ordinatory_payment" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ordinatory_payment" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="registry">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="money" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="money" Type="Int32" Nullable="false" />
+          <Property Name="comment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="amortization_end" Type="DateTime" Precision="0" />
+          <Property Name="is_withdraw" Type="Byte" />
+          <Property Name="credit_end" Type="DateTime" Precision="0" />
+          <Property Name="credit_rate" Type="Int16" />
+          <Property Name="shop_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="roles" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="180" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="roles" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="subscription_end" Type="DateTime" Precision="0" />
+          <Property Name="subscription_lvl" Type="Int16" />
+        </EntityType>
+        <EntityContainer Name="kepartners_data2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="activity" EntityType="Self.activity" />
+          <EntitySet Name="cash_flow_activity" EntityType="Self.cash_flow_activity" />
+          <EntitySet Name="cash_flow_category" EntityType="Self.cash_flow_category" />
+          <EntitySet Name="cash_flow_history" EntityType="Self.cash_flow_history" />
+          <EntitySet Name="cash_flow_info" EntityType="Self.cash_flow_info" />
+          <EntitySet Name="cash_flow_statement" EntityType="Self.cash_flow_statement" />
+          <EntitySet Name="category" EntityType="Self.category" />
+          <EntitySet Name="category_history" EntityType="Self.category_history" />
+          <EntitySet Name="registry" EntityType="Self.registry" />
+          <EntitySet Name="user" EntityType="Self.user" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="kepartners_data2ModelStoreContainer" CdmEntityContainer="kepartners_data2Entities">
+          <EntitySetMapping Name="activity">
+            <EntityTypeMapping TypeName="kepartners_data2Model.activity">
+              <MappingFragment StoreEntitySet="activity">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="is_main" ColumnName="is_main" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cash_flow_activity">
+            <EntityTypeMapping TypeName="kepartners_data2Model.cash_flow_activity">
+              <MappingFragment StoreEntitySet="cash_flow_activity">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="is_main" ColumnName="is_main" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cash_flow_category">
+            <EntityTypeMapping TypeName="kepartners_data2Model.cash_flow_category">
+              <MappingFragment StoreEntitySet="cash_flow_category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="activity_id" ColumnName="activity_id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="is_income" ColumnName="is_income" />
+                <ScalarProperty Name="is_main" ColumnName="is_main" />
+                <ScalarProperty Name="is_direct_expense" ColumnName="is_direct_expense" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cash_flow_history">
+            <EntityTypeMapping TypeName="kepartners_data2Model.cash_flow_history">
+              <MappingFragment StoreEntitySet="cash_flow_history">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="money" ColumnName="money" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="amortization_months" ColumnName="amortization_months" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cash_flow_info">
+            <EntityTypeMapping TypeName="kepartners_data2Model.cash_flow_info">
+              <MappingFragment StoreEntitySet="cash_flow_info">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="money_start" ColumnName="money_start" />
+                <ScalarProperty Name="money_end" ColumnName="money_end" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cash_flow_statement">
+            <EntityTypeMapping TypeName="kepartners_data2Model.cash_flow_statement">
+              <MappingFragment StoreEntitySet="cash_flow_statement">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="money" ColumnName="money" />
+                <ScalarProperty Name="month" ColumnName="month" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="category">
+            <EntityTypeMapping TypeName="kepartners_data2Model.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="activity_id" ColumnName="activity_id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="is_income" ColumnName="is_income" />
+                <ScalarProperty Name="is_direct_expense" ColumnName="is_direct_expense" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+                <ScalarProperty Name="is_main" ColumnName="is_main" />
+                <ScalarProperty Name="shop_id" ColumnName="shop_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="category_history">
+            <EntityTypeMapping TypeName="kepartners_data2Model.category_history">
+              <MappingFragment StoreEntitySet="category_history">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ordinatory_payment" ColumnName="ordinatory_payment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="registry">
+            <EntityTypeMapping TypeName="kepartners_data2Model.registry">
+              <MappingFragment StoreEntitySet="registry">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="money" ColumnName="money" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="amortization_end" ColumnName="amortization_end" />
+                <ScalarProperty Name="is_withdraw" ColumnName="is_withdraw" />
+                <ScalarProperty Name="credit_end" ColumnName="credit_end" />
+                <ScalarProperty Name="credit_rate" ColumnName="credit_rate" />
+                <ScalarProperty Name="shop_id" ColumnName="shop_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="kepartners_data2Model.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="roles" ColumnName="roles" />
+                <ScalarProperty Name="subscription_end" ColumnName="subscription_end" />
+                <ScalarProperty Name="subscription_lvl" ColumnName="subscription_lvl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
