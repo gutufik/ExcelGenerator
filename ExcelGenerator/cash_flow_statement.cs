@@ -18,5 +18,7 @@ namespace ExcelGenerator
         public int category_id { get; set; }
         public decimal money { get; set; }
         public short month { get; set; }
+    
+        public virtual cash_flow_category cash_flow_category { get; set; }
     }
 }

@@ -5,42 +5,27 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="kepartners_data2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'kepartners_data2.dbo.activity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="activity">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="user_id" />
-            <PropertyRef Name="is_main" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="255" />
           <Property Name="is_main" Type="bit" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'kepartners_data2.dbo.cash_flow_activity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="cash_flow_activity">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="user_id" />
-            <PropertyRef Name="title" />
-            <PropertyRef Name="is_main" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="is_main" Type="bit" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'kepartners_data2.dbo.cash_flow_category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="cash_flow_category">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="activity_id" />
-            <PropertyRef Name="title" />
-            <PropertyRef Name="is_income" />
-            <PropertyRef Name="is_main" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="parent_id" Type="int" />
@@ -50,16 +35,9 @@ warning 6002: The table/view 'kepartners_data2.dbo.cash_flow_category' does not 
           <Property Name="is_main" Type="bit" Nullable="false" />
           <Property Name="is_direct_expense" Type="bit" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'kepartners_data2.dbo.cash_flow_history' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="cash_flow_history">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="category_id" />
-            <PropertyRef Name="user_id" />
-            <PropertyRef Name="date" />
-            <PropertyRef Name="money" />
-            <PropertyRef Name="month" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="category_id" Type="int" Nullable="false" />
@@ -70,15 +48,9 @@ warning 6002: The table/view 'kepartners_data2.dbo.cash_flow_history' does not h
           <Property Name="comment" Type="nvarchar" MaxLength="255" />
           <Property Name="amortization_months" Type="smallint" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'kepartners_data2.dbo.cash_flow_info' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="cash_flow_info">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="user_id" />
-            <PropertyRef Name="month" />
-            <PropertyRef Name="money_start" />
-            <PropertyRef Name="money_end" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
@@ -86,31 +58,18 @@ warning 6002: The table/view 'kepartners_data2.dbo.cash_flow_info' does not have
           <Property Name="money_start" Type="money" Nullable="false" />
           <Property Name="money_end" Type="money" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'kepartners_data2.dbo.cash_flow_statement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="cash_flow_statement">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="category_id" />
-            <PropertyRef Name="money" />
-            <PropertyRef Name="month" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="category_id" Type="int" Nullable="false" />
           <Property Name="money" Type="money" Nullable="false" />
           <Property Name="month" Type="smallint" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'kepartners_data2.dbo.category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="category">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="activity_id" />
-            <PropertyRef Name="title" />
-            <PropertyRef Name="is_income" />
-            <PropertyRef Name="is_direct_expense" />
-            <PropertyRef Name="created_at" />
-            <PropertyRef Name="is_main" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="parent_id" Type="int" />
@@ -123,28 +82,18 @@ warning 6002: The table/view 'kepartners_data2.dbo.category' does not have a pri
           <Property Name="is_main" Type="tinyint" Nullable="false" />
           <Property Name="shop_id" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'kepartners_data2.dbo.category_history' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="category_history">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="category_id" />
-            <PropertyRef Name="date" />
-            <PropertyRef Name="ordinatory_payment" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="category_id" Type="int" Nullable="false" />
           <Property Name="date" Type="date" Nullable="false" />
           <Property Name="ordinatory_payment" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'kepartners_data2.dbo.registry' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="registry">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="category_id" />
-            <PropertyRef Name="date" />
-            <PropertyRef Name="money" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="category_id" Type="int" Nullable="false" />
@@ -157,13 +106,19 @@ warning 6002: The table/view 'kepartners_data2.dbo.registry' does not have a pri
           <Property Name="credit_rate" Type="smallint" />
           <Property Name="shop_id" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'kepartners_data2.dbo.user' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="user">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="email" />
-            <PropertyRef Name="roles" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="180" Nullable="false" />
@@ -171,108 +126,210 @@ warning 6002: The table/view 'kepartners_data2.dbo.user' does not have a primary
           <Property Name="subscription_end" Type="date" />
           <Property Name="subscription_lvl" Type="smallint" />
         </EntityType>
+        <Association Name="FK_activity_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="activity" Type="Self.activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="activity">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cash_flow_activity_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="cash_flow_activity" Type="Self.cash_flow_activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cash_flow_activity">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cash_flow_category_cash_flow_activity">
+          <End Role="cash_flow_activity" Type="Self.cash_flow_activity" Multiplicity="1" />
+          <End Role="cash_flow_category" Type="Self.cash_flow_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cash_flow_activity">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cash_flow_category">
+              <PropertyRef Name="activity_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cash_flow_category_cash_flow_category">
+          <End Role="cash_flow_category" Type="Self.cash_flow_category" Multiplicity="0..1" />
+          <End Role="cash_flow_category1" Type="Self.cash_flow_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cash_flow_category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cash_flow_category1">
+              <PropertyRef Name="parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cash_flow_history_cash_flow_category">
+          <End Role="cash_flow_category" Type="Self.cash_flow_category" Multiplicity="1" />
+          <End Role="cash_flow_history" Type="Self.cash_flow_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cash_flow_category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cash_flow_history">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cash_flow_history_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="cash_flow_history" Type="Self.cash_flow_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cash_flow_history">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cash_flow_info_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="cash_flow_info" Type="Self.cash_flow_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cash_flow_info">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cash_flow_statement_cash_flow_category">
+          <End Role="cash_flow_category" Type="Self.cash_flow_category" Multiplicity="1" />
+          <End Role="cash_flow_statement" Type="Self.cash_flow_statement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cash_flow_category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cash_flow_statement">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_category_activity">
+          <End Role="activity" Type="Self.activity" Multiplicity="1" />
+          <End Role="category" Type="Self.category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="activity">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="category">
+              <PropertyRef Name="activity_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_category_category">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="category1" Type="Self.category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="category1">
+              <PropertyRef Name="parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_category_history_category">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="category_history" Type="Self.category_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="category_history">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_registry_category">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="registry" Type="Self.registry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="registry">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="kepartners_data2ModelStoreContainer">
-          <EntitySet Name="activity" EntityType="Self.activity" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [activity].[id] AS [id], 
-    [activity].[user_id] AS [user_id], 
-    [activity].[title] AS [title], 
-    [activity].[is_main] AS [is_main]
-    FROM [dbo].[activity] AS [activity]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="cash_flow_activity" EntityType="Self.cash_flow_activity" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [cash_flow_activity].[id] AS [id], 
-    [cash_flow_activity].[user_id] AS [user_id], 
-    [cash_flow_activity].[title] AS [title], 
-    [cash_flow_activity].[is_main] AS [is_main]
-    FROM [dbo].[cash_flow_activity] AS [cash_flow_activity]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="cash_flow_category" EntityType="Self.cash_flow_category" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [cash_flow_category].[id] AS [id], 
-    [cash_flow_category].[parent_id] AS [parent_id], 
-    [cash_flow_category].[activity_id] AS [activity_id], 
-    [cash_flow_category].[title] AS [title], 
-    [cash_flow_category].[is_income] AS [is_income], 
-    [cash_flow_category].[is_main] AS [is_main], 
-    [cash_flow_category].[is_direct_expense] AS [is_direct_expense]
-    FROM [dbo].[cash_flow_category] AS [cash_flow_category]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="cash_flow_history" EntityType="Self.cash_flow_history" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [cash_flow_history].[id] AS [id], 
-    [cash_flow_history].[category_id] AS [category_id], 
-    [cash_flow_history].[user_id] AS [user_id], 
-    [cash_flow_history].[date] AS [date], 
-    [cash_flow_history].[money] AS [money], 
-    [cash_flow_history].[month] AS [month], 
-    [cash_flow_history].[comment] AS [comment], 
-    [cash_flow_history].[amortization_months] AS [amortization_months]
-    FROM [dbo].[cash_flow_history] AS [cash_flow_history]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="cash_flow_info" EntityType="Self.cash_flow_info" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [cash_flow_info].[id] AS [id], 
-    [cash_flow_info].[user_id] AS [user_id], 
-    [cash_flow_info].[month] AS [month], 
-    [cash_flow_info].[money_start] AS [money_start], 
-    [cash_flow_info].[money_end] AS [money_end]
-    FROM [dbo].[cash_flow_info] AS [cash_flow_info]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="cash_flow_statement" EntityType="Self.cash_flow_statement" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [cash_flow_statement].[id] AS [id], 
-    [cash_flow_statement].[category_id] AS [category_id], 
-    [cash_flow_statement].[money] AS [money], 
-    [cash_flow_statement].[month] AS [month]
-    FROM [dbo].[cash_flow_statement] AS [cash_flow_statement]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="category" EntityType="Self.category" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [category].[id] AS [id], 
-    [category].[parent_id] AS [parent_id], 
-    [category].[activity_id] AS [activity_id], 
-    [category].[title] AS [title], 
-    [category].[is_income] AS [is_income], 
-    [category].[is_direct_expense] AS [is_direct_expense], 
-    [category].[created_at] AS [created_at], 
-    [category].[deleted_at] AS [deleted_at], 
-    [category].[is_main] AS [is_main], 
-    [category].[shop_id] AS [shop_id]
-    FROM [dbo].[category] AS [category]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="category_history" EntityType="Self.category_history" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [category_history].[id] AS [id], 
-    [category_history].[category_id] AS [category_id], 
-    [category_history].[date] AS [date], 
-    [category_history].[ordinatory_payment] AS [ordinatory_payment]
-    FROM [dbo].[category_history] AS [category_history]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="registry" EntityType="Self.registry" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [registry].[id] AS [id], 
-    [registry].[category_id] AS [category_id], 
-    [registry].[date] AS [date], 
-    [registry].[money] AS [money], 
-    [registry].[comment] AS [comment], 
-    [registry].[amortization_end] AS [amortization_end], 
-    [registry].[is_withdraw] AS [is_withdraw], 
-    [registry].[credit_end] AS [credit_end], 
-    [registry].[credit_rate] AS [credit_rate], 
-    [registry].[shop_id] AS [shop_id]
-    FROM [dbo].[registry] AS [registry]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="user" EntityType="Self.user" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [user].[id] AS [id], 
-    [user].[email] AS [email], 
-    [user].[roles] AS [roles], 
-    [user].[subscription_end] AS [subscription_end], 
-    [user].[subscription_lvl] AS [subscription_lvl]
-    FROM [dbo].[user] AS [user]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="activity" EntityType="Self.activity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cash_flow_activity" EntityType="Self.cash_flow_activity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cash_flow_category" EntityType="Self.cash_flow_category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cash_flow_history" EntityType="Self.cash_flow_history" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cash_flow_info" EntityType="Self.cash_flow_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cash_flow_statement" EntityType="Self.cash_flow_statement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category_history" EntityType="Self.category_history" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="registry" EntityType="Self.registry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_activity_user" Association="Self.FK_activity_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="activity" EntitySet="activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cash_flow_activity_user" Association="Self.FK_cash_flow_activity_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="cash_flow_activity" EntitySet="cash_flow_activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cash_flow_category_cash_flow_activity" Association="Self.FK_cash_flow_category_cash_flow_activity">
+            <End Role="cash_flow_activity" EntitySet="cash_flow_activity" />
+            <End Role="cash_flow_category" EntitySet="cash_flow_category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cash_flow_category_cash_flow_category" Association="Self.FK_cash_flow_category_cash_flow_category">
+            <End Role="cash_flow_category" EntitySet="cash_flow_category" />
+            <End Role="cash_flow_category1" EntitySet="cash_flow_category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cash_flow_history_cash_flow_category" Association="Self.FK_cash_flow_history_cash_flow_category">
+            <End Role="cash_flow_category" EntitySet="cash_flow_category" />
+            <End Role="cash_flow_history" EntitySet="cash_flow_history" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cash_flow_history_user" Association="Self.FK_cash_flow_history_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="cash_flow_history" EntitySet="cash_flow_history" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cash_flow_info_user" Association="Self.FK_cash_flow_info_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="cash_flow_info" EntitySet="cash_flow_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cash_flow_statement_cash_flow_category" Association="Self.FK_cash_flow_statement_cash_flow_category">
+            <End Role="cash_flow_category" EntitySet="cash_flow_category" />
+            <End Role="cash_flow_statement" EntitySet="cash_flow_statement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_category_activity" Association="Self.FK_category_activity">
+            <End Role="activity" EntitySet="activity" />
+            <End Role="category" EntitySet="category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_category_category" Association="Self.FK_category_category">
+            <End Role="category" EntitySet="category" />
+            <End Role="category1" EntitySet="category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_category_history_category" Association="Self.FK_category_history_category">
+            <End Role="category" EntitySet="category" />
+            <End Role="category_history" EntitySet="category_history" />
+          </AssociationSet>
+          <AssociationSet Name="FK_registry_category" Association="Self.FK_registry_category">
+            <End Role="category" EntitySet="category" />
+            <End Role="registry" EntitySet="registry" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -282,33 +339,28 @@ warning 6002: The table/view 'kepartners_data2.dbo.user' does not have a primary
         <EntityType Name="activity">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="user_id" />
-            <PropertyRef Name="is_main" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
           <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="is_main" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_activity_user" FromRole="activity" ToRole="user" />
+          <NavigationProperty Name="category" Relationship="Self.FK_category_activity" FromRole="activity" ToRole="category" />
         </EntityType>
         <EntityType Name="cash_flow_activity">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="user_id" />
-            <PropertyRef Name="title" />
-            <PropertyRef Name="is_main" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
           <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="is_main" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_cash_flow_activity_user" FromRole="cash_flow_activity" ToRole="user" />
+          <NavigationProperty Name="cash_flow_category" Relationship="Self.FK_cash_flow_category_cash_flow_activity" FromRole="cash_flow_activity" ToRole="cash_flow_category" />
         </EntityType>
         <EntityType Name="cash_flow_category">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="activity_id" />
-            <PropertyRef Name="title" />
-            <PropertyRef Name="is_income" />
-            <PropertyRef Name="is_main" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="parent_id" Type="Int32" />
@@ -317,15 +369,15 @@ warning 6002: The table/view 'kepartners_data2.dbo.user' does not have a primary
           <Property Name="is_income" Type="Boolean" Nullable="false" />
           <Property Name="is_main" Type="Boolean" Nullable="false" />
           <Property Name="is_direct_expense" Type="Boolean" />
+          <NavigationProperty Name="cash_flow_activity" Relationship="Self.FK_cash_flow_category_cash_flow_activity" FromRole="cash_flow_category" ToRole="cash_flow_activity" />
+          <NavigationProperty Name="cash_flow_category1" Relationship="Self.FK_cash_flow_category_cash_flow_category" FromRole="cash_flow_category" ToRole="cash_flow_category1" />
+          <NavigationProperty Name="cash_flow_category2" Relationship="Self.FK_cash_flow_category_cash_flow_category" FromRole="cash_flow_category1" ToRole="cash_flow_category" />
+          <NavigationProperty Name="cash_flow_history" Relationship="Self.FK_cash_flow_history_cash_flow_category" FromRole="cash_flow_category" ToRole="cash_flow_history" />
+          <NavigationProperty Name="cash_flow_statement" Relationship="Self.FK_cash_flow_statement_cash_flow_category" FromRole="cash_flow_category" ToRole="cash_flow_statement" />
         </EntityType>
         <EntityType Name="cash_flow_history">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="category_id" />
-            <PropertyRef Name="user_id" />
-            <PropertyRef Name="date" />
-            <PropertyRef Name="money" />
-            <PropertyRef Name="month" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="category_id" Type="Int32" Nullable="false" />
@@ -335,42 +387,33 @@ warning 6002: The table/view 'kepartners_data2.dbo.user' does not have a primary
           <Property Name="month" Type="Int16" Nullable="false" />
           <Property Name="comment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="amortization_months" Type="Int16" />
+          <NavigationProperty Name="cash_flow_category" Relationship="Self.FK_cash_flow_history_cash_flow_category" FromRole="cash_flow_history" ToRole="cash_flow_category" />
+          <NavigationProperty Name="user" Relationship="Self.FK_cash_flow_history_user" FromRole="cash_flow_history" ToRole="user" />
         </EntityType>
         <EntityType Name="cash_flow_info">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="user_id" />
-            <PropertyRef Name="month" />
-            <PropertyRef Name="money_start" />
-            <PropertyRef Name="money_end" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
           <Property Name="month" Type="Int16" Nullable="false" />
           <Property Name="money_start" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="money_end" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_cash_flow_info_user" FromRole="cash_flow_info" ToRole="user" />
         </EntityType>
         <EntityType Name="cash_flow_statement">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="category_id" />
-            <PropertyRef Name="money" />
-            <PropertyRef Name="month" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="category_id" Type="Int32" Nullable="false" />
           <Property Name="money" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="month" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="cash_flow_category" Relationship="Self.FK_cash_flow_statement_cash_flow_category" FromRole="cash_flow_statement" ToRole="cash_flow_category" />
         </EntityType>
         <EntityType Name="category">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="activity_id" />
-            <PropertyRef Name="title" />
-            <PropertyRef Name="is_income" />
-            <PropertyRef Name="is_direct_expense" />
-            <PropertyRef Name="created_at" />
-            <PropertyRef Name="is_main" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="parent_id" Type="Int32" />
@@ -382,25 +425,25 @@ warning 6002: The table/view 'kepartners_data2.dbo.user' does not have a primary
           <Property Name="deleted_at" Type="DateTime" Precision="0" />
           <Property Name="is_main" Type="Byte" Nullable="false" />
           <Property Name="shop_id" Type="Int32" />
+          <NavigationProperty Name="activity" Relationship="Self.FK_category_activity" FromRole="category" ToRole="activity" />
+          <NavigationProperty Name="category1" Relationship="Self.FK_category_category" FromRole="category" ToRole="category1" />
+          <NavigationProperty Name="category2" Relationship="Self.FK_category_category" FromRole="category1" ToRole="category" />
+          <NavigationProperty Name="category_history" Relationship="Self.FK_category_history_category" FromRole="category" ToRole="category_history" />
+          <NavigationProperty Name="registry" Relationship="Self.FK_registry_category" FromRole="category" ToRole="registry" />
         </EntityType>
         <EntityType Name="category_history">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="category_id" />
-            <PropertyRef Name="date" />
-            <PropertyRef Name="ordinatory_payment" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="category_id" Type="Int32" Nullable="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ordinatory_payment" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="category" Relationship="Self.FK_category_history_category" FromRole="category_history" ToRole="category" />
         </EntityType>
         <EntityType Name="registry">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="category_id" />
-            <PropertyRef Name="date" />
-            <PropertyRef Name="money" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="category_id" Type="Int32" Nullable="false" />
@@ -412,19 +455,176 @@ warning 6002: The table/view 'kepartners_data2.dbo.user' does not have a primary
           <Property Name="credit_end" Type="DateTime" Precision="0" />
           <Property Name="credit_rate" Type="Int16" />
           <Property Name="shop_id" Type="Int32" />
+          <NavigationProperty Name="category" Relationship="Self.FK_registry_category" FromRole="registry" ToRole="category" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="user">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="email" />
-            <PropertyRef Name="roles" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="180" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="roles" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="subscription_end" Type="DateTime" Precision="0" />
           <Property Name="subscription_lvl" Type="Int16" />
+          <NavigationProperty Name="activity" Relationship="Self.FK_activity_user" FromRole="user" ToRole="activity" />
+          <NavigationProperty Name="cash_flow_activity" Relationship="Self.FK_cash_flow_activity_user" FromRole="user" ToRole="cash_flow_activity" />
+          <NavigationProperty Name="cash_flow_history" Relationship="Self.FK_cash_flow_history_user" FromRole="user" ToRole="cash_flow_history" />
+          <NavigationProperty Name="cash_flow_info" Relationship="Self.FK_cash_flow_info_user" FromRole="user" ToRole="cash_flow_info" />
         </EntityType>
+        <Association Name="FK_activity_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="activity" Type="Self.activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="activity">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_category_activity">
+          <End Role="activity" Type="Self.activity" Multiplicity="1" />
+          <End Role="category" Type="Self.category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="activity">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="category">
+              <PropertyRef Name="activity_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cash_flow_activity_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="cash_flow_activity" Type="Self.cash_flow_activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cash_flow_activity">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cash_flow_category_cash_flow_activity">
+          <End Role="cash_flow_activity" Type="Self.cash_flow_activity" Multiplicity="1" />
+          <End Role="cash_flow_category" Type="Self.cash_flow_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cash_flow_activity">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cash_flow_category">
+              <PropertyRef Name="activity_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cash_flow_category_cash_flow_category">
+          <End Role="cash_flow_category" Type="Self.cash_flow_category" Multiplicity="0..1" />
+          <End Role="cash_flow_category1" Type="Self.cash_flow_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cash_flow_category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cash_flow_category1">
+              <PropertyRef Name="parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cash_flow_history_cash_flow_category">
+          <End Role="cash_flow_category" Type="Self.cash_flow_category" Multiplicity="1" />
+          <End Role="cash_flow_history" Type="Self.cash_flow_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cash_flow_category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cash_flow_history">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cash_flow_statement_cash_flow_category">
+          <End Role="cash_flow_category" Type="Self.cash_flow_category" Multiplicity="1" />
+          <End Role="cash_flow_statement" Type="Self.cash_flow_statement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cash_flow_category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cash_flow_statement">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cash_flow_history_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="cash_flow_history" Type="Self.cash_flow_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cash_flow_history">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cash_flow_info_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="cash_flow_info" Type="Self.cash_flow_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cash_flow_info">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_category_category">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="category1" Type="Self.category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="category1">
+              <PropertyRef Name="parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_category_history_category">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="category_history" Type="Self.category_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="category_history">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_registry_category">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="registry" Type="Self.registry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="registry">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="kepartners_data2Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="activity" EntityType="Self.activity" />
           <EntitySet Name="cash_flow_activity" EntityType="Self.cash_flow_activity" />
@@ -435,7 +635,56 @@ warning 6002: The table/view 'kepartners_data2.dbo.user' does not have a primary
           <EntitySet Name="category" EntityType="Self.category" />
           <EntitySet Name="category_history" EntityType="Self.category_history" />
           <EntitySet Name="registry" EntityType="Self.registry" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="user" EntityType="Self.user" />
+          <AssociationSet Name="FK_activity_user" Association="Self.FK_activity_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="activity" EntitySet="activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_category_activity" Association="Self.FK_category_activity">
+            <End Role="activity" EntitySet="activity" />
+            <End Role="category" EntitySet="category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cash_flow_activity_user" Association="Self.FK_cash_flow_activity_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="cash_flow_activity" EntitySet="cash_flow_activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cash_flow_category_cash_flow_activity" Association="Self.FK_cash_flow_category_cash_flow_activity">
+            <End Role="cash_flow_activity" EntitySet="cash_flow_activity" />
+            <End Role="cash_flow_category" EntitySet="cash_flow_category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cash_flow_category_cash_flow_category" Association="Self.FK_cash_flow_category_cash_flow_category">
+            <End Role="cash_flow_category" EntitySet="cash_flow_category" />
+            <End Role="cash_flow_category1" EntitySet="cash_flow_category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cash_flow_history_cash_flow_category" Association="Self.FK_cash_flow_history_cash_flow_category">
+            <End Role="cash_flow_category" EntitySet="cash_flow_category" />
+            <End Role="cash_flow_history" EntitySet="cash_flow_history" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cash_flow_statement_cash_flow_category" Association="Self.FK_cash_flow_statement_cash_flow_category">
+            <End Role="cash_flow_category" EntitySet="cash_flow_category" />
+            <End Role="cash_flow_statement" EntitySet="cash_flow_statement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cash_flow_history_user" Association="Self.FK_cash_flow_history_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="cash_flow_history" EntitySet="cash_flow_history" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cash_flow_info_user" Association="Self.FK_cash_flow_info_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="cash_flow_info" EntitySet="cash_flow_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_category_category" Association="Self.FK_category_category">
+            <End Role="category" EntitySet="category" />
+            <End Role="category1" EntitySet="category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_category_history_category" Association="Self.FK_category_history_category">
+            <End Role="category" EntitySet="category" />
+            <End Role="category_history" EntitySet="category_history" />
+          </AssociationSet>
+          <AssociationSet Name="FK_registry_category" Association="Self.FK_registry_category">
+            <End Role="category" EntitySet="category" />
+            <End Role="registry" EntitySet="registry" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -550,6 +799,17 @@ warning 6002: The table/view 'kepartners_data2.dbo.user' does not have a primary
                 <ScalarProperty Name="credit_end" ColumnName="credit_end" />
                 <ScalarProperty Name="credit_rate" ColumnName="credit_rate" />
                 <ScalarProperty Name="shop_id" ColumnName="shop_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="kepartners_data2Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

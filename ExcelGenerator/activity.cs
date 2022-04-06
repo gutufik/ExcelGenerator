@@ -14,9 +14,19 @@ namespace ExcelGenerator
     
     public partial class activity
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public activity()
+        {
+            this.category = new HashSet<category>();
+        }
+    
         public int id { get; set; }
         public int user_id { get; set; }
         public string title { get; set; }
         public bool is_main { get; set; }
+    
+        public virtual user user { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<category> category { get; set; }
     }
 }

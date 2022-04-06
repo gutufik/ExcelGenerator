@@ -24,5 +24,7 @@ namespace ExcelGenerator
         public Nullable<System.DateTime> credit_end { get; set; }
         public Nullable<short> credit_rate { get; set; }
         public Nullable<int> shop_id { get; set; }
+    
+        public virtual category category { get; set; }
     }
 }

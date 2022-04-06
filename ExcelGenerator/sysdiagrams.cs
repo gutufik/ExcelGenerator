@@ -12,14 +12,12 @@ namespace ExcelGenerator
     using System;
     using System.Collections.Generic;
     
-    public partial class cash_flow_info
+    public partial class sysdiagrams
     {
-        public int id { get; set; }
-        public int user_id { get; set; }
-        public short month { get; set; }
-        public decimal money_start { get; set; }
-        public decimal money_end { get; set; }
-    
-        public virtual user user { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

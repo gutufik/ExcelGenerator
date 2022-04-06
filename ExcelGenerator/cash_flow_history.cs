@@ -22,5 +22,8 @@ namespace ExcelGenerator
         public short month { get; set; }
         public string comment { get; set; }
         public Nullable<short> amortization_months { get; set; }
+    
+        public virtual cash_flow_category cash_flow_category { get; set; }
+        public virtual user user { get; set; }
     }
 }

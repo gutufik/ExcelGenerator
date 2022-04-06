@@ -14,6 +14,14 @@ namespace ExcelGenerator
     
     public partial class cash_flow_category
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public cash_flow_category()
+        {
+            this.cash_flow_category1 = new HashSet<cash_flow_category>();
+            this.cash_flow_history = new HashSet<cash_flow_history>();
+            this.cash_flow_statement = new HashSet<cash_flow_statement>();
+        }
+    
         public int id { get; set; }
         public Nullable<int> parent_id { get; set; }
         public int activity_id { get; set; }
@@ -21,5 +29,14 @@ namespace ExcelGenerator
         public bool is_income { get; set; }
         public bool is_main { get; set; }
         public Nullable<bool> is_direct_expense { get; set; }
+    
+        public virtual cash_flow_activity cash_flow_activity { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cash_flow_category> cash_flow_category1 { get; set; }
+        public virtual cash_flow_category cash_flow_category2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cash_flow_history> cash_flow_history { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cash_flow_statement> cash_flow_statement { get; set; }
     }
 }

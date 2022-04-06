@@ -15,11 +15,19 @@ namespace ExcelGenerator
     
     public partial class kepartners_data2Entities : DbContext
     {
+        private static kepartners_data2Entities _context;
+
         public kepartners_data2Entities()
             : base("name=kepartners_data2Entities")
         {
         }
-    
+        public static kepartners_data2Entities GetContext()
+        {
+            if (_context == null)
+                _context = new kepartners_data2Entities();
+            return _context;
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -34,6 +42,7 @@ namespace ExcelGenerator
         public virtual DbSet<category> category { get; set; }
         public virtual DbSet<category_history> category_history { get; set; }
         public virtual DbSet<registry> registry { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<user> user { get; set; }
     }
 }

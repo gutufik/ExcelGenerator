@@ -18,5 +18,7 @@ namespace ExcelGenerator
         public int category_id { get; set; }
         public System.DateTime date { get; set; }
         public int ordinatory_payment { get; set; }
+    
+        public virtual category category { get; set; }
     }
 }
